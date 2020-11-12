@@ -1,0 +1,74 @@
+{
+  "name": "@codesnippet/editor",
+  "description": "Codesnippet editor for the codesnippet site",
+  "author": "Thomas Lamars &amp; Job Vermeulen",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd",
+    "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format umd --file dist/codesnippet-editor.umd.js",
+    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es --file dist/codesnippet-editor.esm.js",
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife --file dist/codesnippet-editor.min.js"
+  },
+  "publishConfig": {
+    "registry":"http://gitlab.thomaur.dev/api/v4/projects/51/packages/npm/"
+  },
+  "main": "dist/codesnippet-editor.umd.js",
+  "module": "dist/codesnippet-editor.esm.js",
+  "unpkg": "dist/codesnippet-editor.min.js",
+  "dependencies": {
+    "codemirror": "^5.53.2",
+    "core-js": "^3.6.4",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
+    "cross-env": "^5.2.0",
+    "minimist": "^1.2.0",
+    "rollup": "^1.14.4",
+    "rollup-plugin-buble": "^0.19.6",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify-es": "0.0.1",
+    "rollup-plugin-vue": "^4.7.2",
+    "vue": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "browser": {
+    "./sfc": "src/codesnippet-editor.vue"
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "attributes.json",
+    "tags.json"
+  ],
+  "vetur": {
+    "tags": "tags.json",
+    "attributes": "attributes.json"
+  }
+}
